@@ -5,5 +5,7 @@ public class Annonce {
     public String url;
     public String category;
     public String titre;
-    public String texte;       
+    public String texte;   
+    public boolean isCommercial;
+    public boolean hasImage;    
 }

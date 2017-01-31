@@ -1,4 +1,4 @@
-package ComeToLeech;
+package ComeToLeech.sites;
 
 
 public class GenericSite extends AbstractSite {

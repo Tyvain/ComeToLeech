@@ -4,11 +4,4 @@
     - !ComeToLeech.model.Rubrique    
       category: VEHICULE_4x4
       subUrls:
-        - rubrique_4x4  
-    - !ComeToLeech.model.Rubrique    
-      category: MOTOS
-      subUrls:
-        - rubrique_grosse_cylindree
-        - rubrique_125cm_et_moins
-        - rubrique_scooters_125_et_plus
-      
+        - rubrique_4x4

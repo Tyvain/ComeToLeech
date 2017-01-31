@@ -1,6 +1,5 @@
-package ComeToLeech;
+package ComeToLeech.sites;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.stream.Stream;
 
