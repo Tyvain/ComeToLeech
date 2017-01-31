@@ -1,0 +1,7 @@
+- !ComeToLeech.model.Source
+   rootUrl: https://nautisme.nc/
+   rubriques:
+      - !ComeToLeech.model.Rubrique
+        category: BATEAUX_MOTEUR
+        subUrls:
+ 	      - rubrique_bateaux_a_moteur

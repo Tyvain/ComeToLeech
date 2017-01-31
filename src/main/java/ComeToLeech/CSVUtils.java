@@ -16,6 +16,9 @@ public class CSVUtils {
     private static final char DEFAULT_SEPARATOR = ',';
 
     private static String getImageByIndex(Annonce annonce, int index) {
+        if (annonce.imgs == null) {
+            return "";
+            }
         return annonce.imgs.length > index ? annonce.imgs[index] : "";
     }
 

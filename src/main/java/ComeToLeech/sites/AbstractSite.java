@@ -11,7 +11,7 @@ import org.jsoup.select.Elements;
 import ComeToLeech.model.Annonce;
 
 public abstract class AbstractSite {
-    
+
     protected abstract String getTitreSelector();
 
     protected abstract String getTexteSelector();
@@ -23,7 +23,7 @@ public abstract class AbstractSite {
     public Stream<Annonce> getAnnonces(String rootUrl, String rubUrl, String rub) {
         // liste des docs (cas des pages contenant les liens)  
         System.out.println("       from " + rootUrl + rubUrl + " into " + rub + "...");
-        Document doc =  getDocumentFromUrl(rootUrl + rubUrl);
+        Document doc = getDocumentFromUrl(rootUrl + rubUrl);
 
         // liste des elements (cad liens des annonces)
         Elements elemz = doc.select(getLinkSelector());
@@ -35,7 +35,7 @@ public abstract class AbstractSite {
         Stream<String> urlz = idz.map(s -> rootUrl + s);
 
         // liste des annonces        
-        Stream<Annonce> ret = urlz.map(u -> getAnnonceFromUrl(u, rootUrl, rub));    
+        Stream<Annonce> ret = urlz.map(u -> getAnnonceFromUrl(u, rootUrl, rub));
         return ret;
     }
 
@@ -51,24 +51,21 @@ public abstract class AbstractSite {
         ret.category = rub;
         ret.url = url;
         ret.imgs = getImagesFromDoc(doc, rootUrl);
+        ret.isCommerciale = ret.texte.contains("Annonce Commerciale");
         return ret;
     }
 
     private static Document getDocumentFromUrl(String url) {
-        // random pause
-        long pause = (long)(Math.random() * 5000);
-        System.out.print("       pausing " + pause/1000 + " s...");
         try {
+            // random pause
+            long pause = (long)(Math.random() * 5000);
+            System.out.print("       pausing " + pause / 1000 + " s...");
             Thread.sleep(pause);
-        } catch (InterruptedException e1) {
-            System.err.println("pausing err: " + e1);
-        }
-        System.out.println(" end pause");
-        
-        try {
+            System.out.println(" end pause");
+
             return Jsoup.parse(new URL(url).openStream(), "UTF-8", url);
         } catch (Exception e) {
-            System.err.println("wrong url: " + e);
+            System.err.println("getDocumentFromUrl err: " + e);
         }
         return null;
     }
